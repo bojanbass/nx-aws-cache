@@ -31,11 +31,19 @@ jobs:
         uses: actions/checkout@v2
       - name: Setup NodeJS and NPM modules
         uses: ./.github/actions/npm-setup
-      - name: Build package
-        run: yarn build nx-aws-cache
-      - uses: ./.github/actions/npm-publish
+      - name: Build packages
+        run: yarn run build:all
+      - name: Publish @nx-aws-plugin/nx-aws-cache
+        uses: ./.github/actions/npm-publish
         with:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           RELEASE_VERSION: ${{ needs.repoMeta.outputs.tag-name }}
           RELEASE_TYPE: ${{ needs.repoMeta.outputs.release-type }}
           SRC_FOLDER: dist/packages/nx-aws-cache
+      - name: Publish @nx-aws-plugin/nx-aws-cache-iac
+        uses: ./.github/actions/npm-publish
+        with:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          RELEASE_VERSION: ${{ needs.repoMeta.outputs.tag-name }}
+          RELEASE_TYPE: ${{ needs.repoMeta.outputs.release-type }}
+          SRC_FOLDER: dist/apps/nx-aws-cache-iac

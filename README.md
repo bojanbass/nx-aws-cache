@@ -24,6 +24,10 @@ npm run nx generate @nx-aws-plugin/nx-aws-cache:init
 
 This will make the necessary changes to nx.json in your workspace to use nx-aws-cache runner.
 
+## Setup Infrastructure and Secrets automatically
+
+Read the [README.md of @nx-aws-plugin/nx-aws-cache-iac](https://github.com/bojanbass/nx-aws/blob/master/apps/nx-aws-cache-iac/README.md)
+
 ## Plugin settings
 
 There are two ways to set-up plugin options, using `nx.json` or `Environment variables`. Here is a list of all possible options:
